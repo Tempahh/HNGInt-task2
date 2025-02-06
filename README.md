@@ -27,7 +27,7 @@ GET /api/classify-number/42/trivia
     "number": 42,
     "isPrime": false,
     "isPerfect": false,
-    "properties": ['', "even"],
+    "properties": ["even"],
     "digitSum": 6,
     "fun_fact": "42 is the number of laws of cricket."
 }
