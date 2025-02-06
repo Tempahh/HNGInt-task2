@@ -33,7 +33,7 @@ app.get('/api/classify-number', async (req, res) => {
 
     try {
         // Construct the external API URL
-        const extUrl = `http://numbersapi.com/${num}`;
+        const extUrl = `http://numbersapi.com/${number}`;
         const response = await fetch(extUrl);
 
         // Check if the response from the external API is successful
