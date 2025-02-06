@@ -24,15 +24,12 @@ export function isPerfect(num) {
 }
 
 export function isArmstrong(num) {
-    const num_str = num.toString()
-    const num_len = num_str.length
-    let sum = 0
+    if (typeof num !== 'number' || isNaN(num) || !Number.isInteger(num) || num < 0) return false;
 
-    for (let i = 0; i < num_len; i++) {
-        sum += Math.pow(parseInt(num_str[i]), num_len)
-    }
-
-    return sum == num ? 'Armstrong' : ''
+    const numStr = num.toString();
+    const numLen = numStr.length;
+    const sum = numStr.split('').reduce((acc, digit) => acc + Math.pow(parseInt(digit), numLen), 0);
+    return sum === num ? 'armstrong' : undefined;
 }
 
 export function numParity(num) {
