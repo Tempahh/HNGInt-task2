@@ -16,7 +16,8 @@ app.get('/api/classify-number', async (req, res) => {
     // Validate the input parameters
     if (!number) {
         return res.status(400).json({
-            message: 'Invalid request. Please provide a valid integer number.',
+            error: true,
+            number: `${number}`
         });
     }
 
@@ -24,8 +25,8 @@ app.get('/api/classify-number', async (req, res) => {
     //convert the number to an integer
     const num = parseInt(number, 10);
     if (isNaN(num)) return res.status(400).json({
-        number: 'alphabet',
-        error: true
+        error: true,
+        number: `${number}`
     });
 
     try {
@@ -44,10 +45,10 @@ app.get('/api/classify-number', async (req, res) => {
         // Create the classification object with various properties
         const classification = {
             number: num,
-            isPrime: isPrime(num),
-            isPerfect: isPerfect(num),
+            is_prime: isPrime(num),
+            is_perfect: isPerfect(num),
             properties: [isArmstrong(num), numParity(num)],
-            digitSum: totalSum(num),
+            digit_sum: totalSum(num),
             fun_fact: data, // Data from numbersapi.com
         };
 

@@ -36,7 +36,7 @@ export function isArmstrong(num) {
 }
 
 export function numParity(num) {
-    return num % 2 == 0 ? 'Even' : 'Odd'
+    return num % 2 == 0 ? 'even' : 'Odd'
 }
 
 export function totalSum(num) {
