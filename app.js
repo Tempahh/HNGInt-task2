@@ -10,14 +10,18 @@ app.get('/api/classify-number/:number/:type', async (req, res) => {
     const { number, type } = req.params;
 
     // Validate the input parameters
-    if (!number || !type || isNaN(number) || !Number.isInteger(parseFloat(number))) {
+    if (!number || !type ) {
         return res.status(400).json({
             message: 'Invalid request. Please provide a valid integer number and type.',
         });
     }
 
-
+    //convert the number to an integer
     const num = parseInt(number, 10);
+    if (isNaN(num)) return res.status(400).json({
+        number: 'alphabet',
+        error: true
+    });
 
     try {
         // Construct the external API URL
