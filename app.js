@@ -47,7 +47,12 @@ app.get('/api/classify-number', async (req, res) => {
             number: num,
             is_prime: isPrime(num),
             is_perfect: isPerfect(num),
-            properties: [isArmstrong(num), numParity(num)],
+            properties: [
+                // Only include 'arm' if the number is Armstrong.
+                ...(isArmstrong(num) ? ['armstrong'] : []),
+                // Always include the parity result.
+                numParity(num)
+              ],
             digit_sum: totalSum(num),
             fun_fact: data, // Data from numbersapi.com
         };
