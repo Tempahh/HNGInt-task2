@@ -21,10 +21,11 @@ app.get('/api/classify-number', async (req, res) => {
         });
     }
     //convert negtive numbers to positive
-    if (number < 0) number = Math.abs(number);
+    let num;
+    if (number < 0) num = Math.abs(number);
 
     //convert the number to an integer
-    const num = parseInt(number, 10);
+    num = parseInt(number, 10);
     if (isNaN(num)) return res.status(400).json({
         error: true,
         number: `${number}`
@@ -45,7 +46,7 @@ app.get('/api/classify-number', async (req, res) => {
 
         // Create the classification object with various properties
         const classification = {
-            number: num,
+            number: number,
             is_prime: isPrime(num),
             is_perfect: isPerfect(num),
             properties: [
