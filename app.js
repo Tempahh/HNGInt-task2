@@ -49,7 +49,7 @@ app.get('/api/classify-number', async (req, res) => {
             is_perfect: isPerfect(num),
             properties: [
                 // Only include 'arm' if the number is Armstrong.
-                ...(isArmstrong(num) ? ['armstrong'] : []),
+                ...isArmstrong(num),
                 // Always include the parity result.
                 numParity(num)
               ],

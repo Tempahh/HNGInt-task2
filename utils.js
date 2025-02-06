@@ -36,12 +36,12 @@ export function isArmstrong(num) {
       return acc + Math.pow(parseInt(digit, 10), numLen);
     }, 0);
   
-    return sum === num;
+    return sum === num ? ['armstrong']: [];
   }
   
 
 export function numParity(num) {
-    return num % 2 == 0 ? 'even' : 'Odd'
+    return num % 2 == 0 ? 'even' : 'odd'
 }
 
 export function totalSum(num) {
