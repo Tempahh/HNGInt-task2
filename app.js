@@ -1,4 +1,5 @@
 import express from 'express';
+import fetch from 'node-fetch';
 import { isPrime, isPerfect, isArmstrong, numParity, totalSum } from './utils.js';
 const app = express()
 
@@ -6,15 +7,16 @@ app.get('/', (req, res) => {
     res.json('Hello World')
 })
 
-app.get('/api/classify-number/:number/:type', async (req, res) => {
-    const { number, type } = req.params;
+app.get('/api/classify-number', async (req, res) => {
+    const { number} = req.query;
 
     // Validate the input parameters
-    if (!number || !type ) {
+    if (!number) {
         return res.status(400).json({
-            message: 'Invalid request. Please provide a valid integer number and type.',
+            message: 'Invalid request. Please provide a valid integer number.',
         });
     }
+
 
     //convert the number to an integer
     const num = parseInt(number, 10);
@@ -25,7 +27,7 @@ app.get('/api/classify-number/:number/:type', async (req, res) => {
 
     try {
         // Construct the external API URL
-        const extUrl = `http://numbersapi.com/${num}/${type}`;
+        const extUrl = `http://numbersapi.com/${num}`;
         const response = await fetch(extUrl);
 
         // Check if the response from the external API is successful
