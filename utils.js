@@ -26,7 +26,7 @@ export function isPerfect(num) {
 }
 
 export function isArmstrong(num) {
-    if (typeof num !== 'number' || isNaN(num) || !Number.isInteger(num) || num < 0) {
+    if (typeof num !== 'number' || isNaN(num) || !Number.isInteger(num)) {
       return false;
     }
   
