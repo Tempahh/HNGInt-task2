@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/classify-number', async (req, res) => {
-    const { number} = req.query;
+    let { number} = req.query;
 
     // Validate the input parameters
     if (!number) {
@@ -20,7 +20,8 @@ app.get('/api/classify-number', async (req, res) => {
             number: `${number}`
         });
     }
-
+    //convert negtive numbers to positive
+    if (number < 0) number = Math.abs(number);
 
     //convert the number to an integer
     const num = parseInt(number, 10);
@@ -48,7 +49,7 @@ app.get('/api/classify-number', async (req, res) => {
             is_prime: isPrime(num),
             is_perfect: isPerfect(num),
             properties: [
-                // Only include 'arm' if the number is Armstrong.
+                // Only include 'armstrong' if the number is Armstrong.
                 ...isArmstrong(num),
                 // Always include the parity result.
                 numParity(num)
