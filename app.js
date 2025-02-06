@@ -2,6 +2,9 @@ import express from 'express';
 import { isPrime, isPerfect, isArmstrong, numParity, totalSum } from './utils.js';
 const app = express()
 
+app.get('/', (req, res) => {
+    res.json('Hello World')
+})
 
 app.get('/api/classify-number/:number/:type', async (req, res) => {
     const { number, type } = req.params;
