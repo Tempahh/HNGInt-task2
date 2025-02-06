@@ -1,7 +1,10 @@
 import express from 'express';
 import fetch from 'node-fetch';
 import { isPrime, isPerfect, isArmstrong, numParity, totalSum } from './utils.js';
+import cors from 'cors';
+
 const app = express()
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.json('Hello World')
