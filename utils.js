@@ -30,15 +30,15 @@ export function isArmstrong(num) {
       return false;
     }
   
-    const numStr = Math.abs(num).toString();
-    const numLen = numStr.length;
-    const sum = numStr.split('').reduce((acc, digit) => {
-      return acc + Math.pow(parseInt(digit, 10), numLen);
+    const numberAsString = Math.abs(num).toString();
+    const numberLength = numberAsString.length;
+    const sum = numberAsString.split('').reduce((acc, digit) => {
+      return acc + Math.pow(parseInt(digit, 10), numberLength);
     }, 0);
   
     return sum === Math.abs(num) ? ['armstrong']: [];
 }
-  
+
 
 export function numParity(num) {
     return num % 2 == 0 ? 'even' : 'odd'
